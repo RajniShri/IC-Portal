@@ -44,7 +44,7 @@ class App extends React.Component {
 	  
     return (
       <div className="container">
-        <h1 class="title">InsurCloud Xchange</h1>
+        <h1 class="title">InsurCloud XChange</h1>
         <div class="col-md-12 row">
         <div class="col-md-2 selected">
           Product details
