@@ -1,27 +1,36 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { faPaperPlane,faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { ApplicationComponent } from './applications/Application.component';
+import { ProductLinesComponent } from './productLines/ProductLines.component';
+import { GWVersionComponent } from './GWVersion/GWVersion.component';
+import { AddonsComponent } from './addons/Addons.component';
 
 class App extends React.Component {
-  productList = ['Personal Auto','Homeowners','Commercial Auto','Business Owners','Commercial Umbrella'];
   selectedItems = [{
-      "name": "Product list",
+      "name": "GW version",
+      "navigate":"./",
+      "items": ["10.0.1"]
+    },{
+      "name": "Applications",
+      "navigate":"./application",
+      "items": ["Policy Center","Billing Center"]
+    },{
+      "name": "Product Lines",
+      "navigate":"./productline",
       "items": ["Personal Auto","Homeowners"]
     },{
-      "name": "Plugins",
-      "items": ["Rating","Forms"]
-    },{
-      "name": "Features",
-      "items": ["Binding","Quoting"]
+      "name": "Add Ons",
+      "navigate":"./addons",
+      "items": ["Pro-metrix","Loss history"]
     }];
+
   constructor(props){
     super(props);
-    this.state = {date:new Date()};
   }
+
   myMehtod =() => {
 	  const requestOptions = {
       method: 'POST',
@@ -33,47 +42,56 @@ class App extends React.Component {
     };
     return fetch("http://localhost:4000/users/authenticate",requestOptions)   
   }
+
   componentDidMount() {
-  this.myMehtod().then((resp)=>{resp.json().then((rep)=>{
-	  this.setState({userDetails:rep});
+    this.myMehtod().then((resp)=>{resp.json().then((rep)=>{
+	    this.setState({userDetails:rep});
 	  })});
   }
 
   render() {
-	  console.log(this.state);
-	  
     return (
       <div className="container">
-        <h1 class="title">InsurCloud XChange</h1>
-        <div class="col-md-12 row">
-        <div class="col-md-2 selected">
-          Product details
-          {this.selectedItems.map(value=>(
-            <div>
-            <li>{value.name}</li>
-            {value.items.map(item=>(
-              <span>{item}</span>
-            ))}
-            </div>
-          ))}
-          <div>ddddd</div>
-        </div>
         
-        <div class="col-md-9 content row">
-          
-        <div class="col-md-12 subtitle"><h4>Please select the product from below list?</h4></div>
-          <div class="items">
-          {this.productList.map(value => (
-            <div class="col-md-6">
-              <div class="icon"><FontAwesomeIcon icon={faPaperPlane} /></div>
-              <div>{value}<FontAwesomeIcon icon={faQuestionCircle} /><input type="checkbox"></input></div>
-              
-            </div>
-          ))}
+        <div class="title">
+          <h1>InsurCloud Exchange</h1>
+          <h6>Marketplace for Guidewire solutions || Powered by Guidewire</h6>
+        </div>
+        <div class="col-md-12 row">
+          <div class="col-md-2 selected">
+            Product details
+            {this.selectedItems.map(value=>(
+              <div><li><a href={value.navigate}>{value.name}</a></li>
+              {value.items.map(item=>(
+                <span>{item}</span>
+              ))}
+              </div>
+            ))}
           </div>
+          <div class="col-md-9 content row">
+            <Router>
+              <div>
+                <Switch>
+                  <Route exact path="/">
+                    <GWVersionComponent />
+                  </Route>
+                  <Route path="/application">
+                    <ApplicationComponent />
+                  </Route>
+                  <Route path="/productline">
+                    <ProductLinesComponent />
+                  </Route>
+                  <Route path="/addons">
+                    <AddonsComponent />
+                  </Route>
+                </Switch>
+              </div>
+              
+            </Router>
+            
           </div>
         </div>
-        <button type="button" class="btn btn-primary">Proceed</button>
+        <button type="button" class="btn btn-primary"><a href="./about">Proceed</a></button>
       </div>
     )
   }
