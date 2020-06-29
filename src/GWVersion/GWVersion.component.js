@@ -13,12 +13,12 @@ export class GWVersionComponent extends React.Component {
 
     render() {
         return (
-        <div class="col-md-12 subtitle">
+        <div className="col-md-12 subtitle">
             <h4>Please select the GW version</h4>
-            <div class="items">
-              {this.versionList.map(value => (
-                <div class="col-md-4">
-                  <div class="icon"><FontAwesomeIcon icon={faPaperPlane} /></div>
+            <div className="items col-md-12">
+              {this.versionList.map((value,i) => (
+                <div className="col-md-3" key={i}>
+                  <div className="icon"><FontAwesomeIcon icon={faPaperPlane} /></div>
                   <div>{value}<FontAwesomeIcon icon={faQuestionCircle} /><input type="checkbox"></input></div>
                 </div>
               ))}

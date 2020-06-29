@@ -14,12 +14,12 @@ export class ApplicationComponent extends React.Component {
 
     render() {
         return (
-        <div class="col-md-12 subtitle">
+        <div className="col-md-12 subtitle">
             <h4>Please select the Application?</h4>
-            <div class="items">
-              {this.appList.map(value => (
-                <div class="col-md-6">
-                  <div class="icon"><FontAwesomeIcon icon={faPaperPlane} /></div>
+            <div className="items">
+              {this.appList.map((value,i) => (
+                <div className="col-md-6" key={i}>
+                  <div className="icon"><FontAwesomeIcon icon={faPaperPlane} /></div>
                   <div>{value}<FontAwesomeIcon icon={faQuestionCircle} /><input type="checkbox"></input></div>
                 </div>
               ))}

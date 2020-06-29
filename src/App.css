@@ -73,5 +73,24 @@
 }
 .selected {
   box-shadow: 1px 0px 4px;
-  margin-right: 20px;
+  padding: 5px 10px;
+  font-size: 15px;
+}
+.selected li {
+  font-size: 14px;
+  list-style: none;
+  color: #057dab;
+  font-weight: 400;
+  cursor: pointer;
+}
+.selected div {
+  font-size: 13px;
+  color: #969698;
+  padding-left: 15px;
+}
+.selected>div {
+  margin-bottom: 15px;
+}
+.items {
+  margin-top: 2em;
 }

@@ -13,12 +13,12 @@ export class ProductLinesComponent extends React.Component {
 
     render() {
         return (
-        <div class="col-md-12 subtitle">
+        <div className="col-md-12 subtitle">
             <h4>Please select the product from below list?</h4>
-            <div class="items">
+            <div className="items">
               {this.productList.map(value => (
-                <div class="col-md-6">
-                  <div class="icon"><FontAwesomeIcon icon={faPaperPlane} /></div>
+                <div className="col-md-6">
+                  <div className="icon"><FontAwesomeIcon icon={faPaperPlane} /></div>
                   <div>{value}<FontAwesomeIcon icon={faQuestionCircle} /><input type="checkbox"></input></div>
                 </div>
               ))}
