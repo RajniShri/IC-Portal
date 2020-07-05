@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export class ApplicationComponent extends React.Component {
     appList = ['Policy Center','OOTB Digital Portal','Claim Center','Custom Digital Portal',
     'Billing Center','Data and Analytics : DataHub/ InfoCenter','Contact Manager','Data and Analytics : Deloitte InsurSense'];
-    appIconList = ['Policycenter.png','OOTB Dgital Portal.png','ClaimCenter.png','Custom Digital Portal.png','Billing Center.png',
-    'DataHub_Infocenter.png','Contact Manager.png','Deloitte InsurSense.png']
+    appIconList = ['policyCenter.png','ootb_DigitalPortal.png','claimCenter.png','custom_DigitalPortal.png','billingCenter.png',
+    'dataHub_Infocenter.png','contactManager.png','deloitte_InsurSense.png']
   
     constructor(props){
         super(props);
@@ -22,10 +22,10 @@ export class ApplicationComponent extends React.Component {
               {this.appList.map((value,i) => (
                 <div className="col-md-6" key={i}>
                   <div className="icon">
-                  <img src={require('./ApplicationLogos/' + this.appIconList[i])} style={{width: "30px",height: "30px"}}/>
+                  <img src={require('./applicationLogos/' + this.appIconList[i])} style={{width: "30px",height: "30px"}}/>
                   </div>
                   <div className="icon">{value}</div>
-                  <img src={require('./ApplicationLogos/Tooltip.png')} style={{width: "15px",height: "15px"}}/>
+                  <img src={require('./applicationLogos/tooltip.png')} style={{width: "15px",height: "15px"}}/>
                 </div>
               ))}
             </div>

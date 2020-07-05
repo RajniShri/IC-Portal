@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class AddonsComponent extends React.Component {
     addonsList = ['Loss History','Pro -Metrix','Address Validation','Driver License Validation'];
-    addonsIconList = ['Loss History.png','Loss History.png','Address Validation.png','DriverLicense.png'];
+    addonsIconList = ['lossHistory.png','proMetrix.png','addressValidation.png','driverLicense.png'];
     constructor(props){
         super(props);
     }
@@ -19,10 +19,10 @@ export class AddonsComponent extends React.Component {
               {this.addonsList.map((value,i) => (
                 <div className="col-md-6"  key={i}>
                   <div className="icon">
-                  <img src={require('./AddonsIcons/' + this.addonsIconList[i])} style={{width: "30px",height: "30px"}}/>
+                  <img src={require('./addonsIcons/' + this.addonsIconList[i])} style={{width: "30px",height: "30px"}}/>
                   </div>
                   <div className="icon">{value}</div>
-                  <img src={require('./AddonsIcons/Tooltip.png')} style={{width: "15px",height: "15px"}}/>
+                  <img src={require('./addonsIcons/tooltip.png')} style={{width: "15px",height: "15px"}}/>
                 </div>
               ))}
             </div>
