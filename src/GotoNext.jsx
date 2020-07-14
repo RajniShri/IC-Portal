@@ -12,7 +12,7 @@ class GotoNext extends React.Component {
   render() {
     
     const { match, location, history } = this.props;
-    return ( <button className="btn btn-primary" onClick={()=>{this.next(history)}}>Proceed</button>);
+    return ( <button className="btn btn-primary" style={{backgroundColor: "#86BC25",borderColor:"#86BC25"}} onClick={()=>{this.next(history)}}>Proceed</button>);
   }
 }
 
