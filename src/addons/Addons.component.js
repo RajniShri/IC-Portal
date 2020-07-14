@@ -14,12 +14,12 @@ export class AddonsComponent extends React.Component {
     render() {
         return (
         <div className="col-md-12 subtitle">
-            <h4>Please select the addons</h4>
+            <h6>Please select the addons</h6>
             <div className="items">
               {this.addonsList.map((value,i) => (
                 <div className="col-md-6"  key={i}>
                   <div className="icon">
-                  <img src={require('./addonsIcons/' + this.addonsIconList[i])} style={{width: "30px",height: "30px"}}/>
+                  <img src={require('./addonsIcons/' + this.addonsIconList[i])} style={{width: "25px",height: "25px"}}/>
                   </div>
                   <div className="icon">{value}</div>
                   <img src={require('./addonsIcons/tooltip.png')} style={{width: "15px",height: "15px"}}/>

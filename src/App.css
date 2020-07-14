@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #86BC25;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #86BC25;
 }
 
 @keyframes App-logo-spin {
@@ -51,7 +51,7 @@
 .title {
   text-align: center;
     padding: 0.5em 0px 1em;
-    background: #89bcf3;
+    background: #86BC25;
 }
 .items>div {
   padding: 0px 0px 3em 0em;
@@ -79,13 +79,13 @@
 .selected li {
   font-size: 14px;
   list-style: none;
-  color: #057dab;
+  color: #86BC25;
   font-weight: 400;
   cursor: pointer;
 }
 .selected div {
   font-size: 13px;
-  color: #969698;
+  color: #75787B;
   padding-left: 15px;
 }
 .selected>div {
