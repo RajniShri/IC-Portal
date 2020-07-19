@@ -30,7 +30,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="title">
           <h1>InsurCloud Exchange</h1>
           <h6>Marketplace for Guidewire solutions || Powered by Guidewire</h6>

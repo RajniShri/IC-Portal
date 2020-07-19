@@ -28,7 +28,7 @@ class SideMenu extends React.Component {
   render() {
     const { match, location, history } = this.props;
     return (
-      <div class="selected">
+      <div class="selected" style={{height:"700px"}}>
         <h6>Product details</h6>
         {this.selectedItems.map((value, i) => (
           <div key={i}>

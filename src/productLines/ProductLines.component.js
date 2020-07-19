@@ -19,11 +19,11 @@ export class ProductLinesComponent extends React.Component {
             <div className="items">
               {this.productList.map((value,i) => (
                 <div className="col-md-6" key={i}>
+                  <button class="button button1">
                   <div className="icon">
                   <img src={require('./productLinesIcons/' + this.productIconList[i])} style={{width: "25px",height: "25px"}}/>
-                  </div>
-                  <div className="icon">{value}</div>
-                  <img src={require('./productLinesIcons/tooltip.png')} style={{width: "15px",height: "15px"}}/>
+                  </div>{value}</button>
+                  <img src={require('./productLinesIcons/tooltip.png')} style={{width: "15px",height: "15px",marginLeft: "5px",marginTop: "25px"}}/>
                 </div>
               ))}
             </div>

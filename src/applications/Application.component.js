@@ -1,10 +1,9 @@
 import React from 'react';
-import { faPaperPlane,faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './Application.component.css';
 
 export class ApplicationComponent extends React.Component {
     appList = ['Policy Center','OOTB Digital Portal','Claim Center','Custom Digital Portal',
-    'Billing Center','Data and Analytics : DataHub/ InfoCenter','Contact Manager','Data and Analytics : Deloitte InsurSense'];
+    'Billing Center','Data & Analytics : DataHub/ InfoCenter','Contact Manager','Data & Analytics : Deloitte InsurSense'];
     appIconList = ['policyCenter.png','ootb_DigitalPortal.png','claimCenter.png','custom_DigitalPortal.png','billingCenter.png',
     'dataHub_Infocenter.png','contactManager.png','deloitte_InsurSense.png'];
     versionList = ['9','10.0.1','10.0.2'];
@@ -35,11 +34,11 @@ export class ApplicationComponent extends React.Component {
             <div className="items">
               {this.appList.map((value,i) => (
                 <div className="col-md-6" key={i}>
+                  <button class="button button1">
                   <div className="icon">
-                  <img src={require('./applicationLogos/' + this.appIconList[i])} style={{width: "25px",height: "25px"}}/>
-                  </div>
-                  <div className="icon">{value}</div>
-                  <img src={require('./applicationLogos/tooltip.png')} style={{width: "15px",height: "15px",marginBottom: "3px"}}/>
+                  <img src={require('./applicationLogos/' + this.appIconList[i])} style={{marginTop:"10px",width: "25px",height: "25px"}}/>
+                  </div>{value}</button>
+                  <img src={require('./applicationLogos/tooltip.png')} style={{width: "15px",height: "15px",marginTop: "25px",marginLeft:"5px"}}/>
                 </div>
               ))}
             </div>
