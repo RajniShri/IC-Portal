@@ -1,23 +1,19 @@
 import React from 'react';
 import { faPaperPlane,faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {iconsBaseUrl} from "../config";
 
 export class ApplicationComponent extends React.Component {
 
-    appList = ['Policy Center','OOTB Digital Portal','Claim Center','Custom Digital Portal',
-    'Billing Center','Data and Analytics : DataHub/ InfoCenter','Contact Manager','Data and Analytics : Deloitte InsurSense'];
-    appIconList = ['policyCenter.png','ootb_DigitalPortal.png','claimCenter.png','custom_DigitalPortal.png','billingCenter.png',
-    'dataHub_Infocenter.png','contactManager.png','deloitte_InsurSense.png'];
-    versionList = ['9','10.0.1','10.0.2'];
-  
     constructor(props){
         super(props);
         this.state ={
-          applicationList:[]
+          applicationList:[],
+          versionList:[]
         }
     }
 
     componentDidMount(){
+      this.setState({versionList:JSON.parse(sessionStorage.getItem('metadata'))[0].versions});
 	    this.setState({applicationList:JSON.parse(sessionStorage.getItem('metadata'))[0].applications});
     }
 
@@ -27,10 +23,10 @@ export class ApplicationComponent extends React.Component {
         <div className="col-md-12 subtitle" >
             <h6>Please select the GW Version</h6>
             <div className="items col-md-12" style={{marginTop:"0.5rem", height: "15px"}}>
-              {this.versionList.map((value,i) => (
+              {this.state.versionList.map((value,i) => (
                 <div className="col-md-3" key={i}>
-                  <div>{value} <input type="checkbox"></input></div>
-                  <img src={require('./applicationLogos/tooltip.png')} style={{width: "15px",height: "15px",marginLeft: "8px",marginBottom: "5px"}}/>
+                  <div>{value.name} <input type="checkbox"></input></div>
+                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginLeft: "8px",marginBottom: "5px"}}/>
                 </div>
               ))}
             </div>
@@ -42,10 +38,10 @@ export class ApplicationComponent extends React.Component {
               {this.state.applicationList.map((value,i) => (
                 <div className="col-md-6" key={i}>
                   <div className="icon">
-                  <img src={require('./applicationLogos/' + this.appIconList[i])} style={{width: "25px",height: "25px"}}/>
+                  <img src={iconsBaseUrl+value.icon} style={{width: "25px",height: "25px"}}/>
                   </div>
-                  <div className="icon">{value}</div>
-                  <img src={require('./applicationLogos/tooltip.png')} style={{width: "15px",height: "15px",marginBottom: "3px"}}/>
+                  <div className="icon">{value.name}</div>
+                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginBottom: "3px"}}/>
 
                 </div>
               ))}
