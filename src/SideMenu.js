@@ -6,10 +6,6 @@ import { navList } from "./appConst/appConst";
 class SideMenu extends React.Component {
   count = 1;
   selectedItems = [{
-    "name": "GW version",
-    "navigate":"./",
-    "items": ["10.0.1"]
-  },{
     "name": "Applications",
     "navigate":"./application",
     "items": ["Policy Center","Billing Center"]
