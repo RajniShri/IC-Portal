@@ -42,3 +42,20 @@ code {
   background-color: #86BC25;
   color: white;
 }
+.tooltipIcon{
+  width: "15px";
+  height: "15px";
+  margin-Top: "25px";
+  margin-Left:"5px";
+}
+.buttonIcon{
+  margin-Top:"10px";
+  width: "25px";
+  height: "25px";
+}
+.tooltipCheckBox{
+  width: "15px";
+  height: "15px";
+  margin-Left: "8px";
+  margin-Bottom: "5px";
+}

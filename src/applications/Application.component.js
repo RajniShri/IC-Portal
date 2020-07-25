@@ -26,7 +26,7 @@ export class ApplicationComponent extends React.Component {
               {this.state.versionList.map((value,i) => (
                 <div className="col-md-3" key={i}>
                   <div>{value.name} <input type="checkbox"></input></div>
-                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginLeft: "8px",marginBottom: "5px"}}/>
+                  <img class="tooltipCheckBox" src={iconsBaseUrl+'tooltip.png'}/>
                 </div>
               ))}
             </div>
@@ -39,9 +39,9 @@ export class ApplicationComponent extends React.Component {
                 <div className="col-md-6" key={i}>
                   <button class="button button1">
                   <div className="icon">
-                  <img src={iconsBaseUrl+value.icon} style={{marginTop:"10px",width: "25px",height: "25px"}}/>
+                  <img class="buttonIcon" src={iconsBaseUrl+value.icon}/>
                   </div>{value.name}</button>
-                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginTop: "25px",marginLeft:"5px"}}/>
+                  <img class="tooltipIcon" src={iconsBaseUrl+'tooltip.png'}/>
 
                 </div>
               ))}
