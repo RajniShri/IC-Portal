@@ -3,7 +3,7 @@ import '../index.css';
 import {iconsBaseUrl} from "../config";
 
 export class AddonsComponent extends React.Component {
-  
+
     constructor(props){
         super(props);
         this.state ={
@@ -24,9 +24,9 @@ export class AddonsComponent extends React.Component {
                 <div className="col-md-6"  key={i}>
                   <button class="button button1">
                   <div className="icon">
-                  <img src={iconsBaseUrl+value.icon} style={{width: "25px",height: "25px"}}/>
+                  <img class="buttonIcon" src={iconsBaseUrl+value.icon}/>
                   </div>{value}</button>
-                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginLeft: "5px",marginTop: "25px"}}/>
+                  <img class="tooltipIcon" src={iconsBaseUrl+'tooltip.png'}/>
                 </div>
               ))}
             </div>
