@@ -1,5 +1,5 @@
 import React from "react";
-
+import App from './App';
 import { withRouter } from "react-router";
 import { navList } from "./appConst/appConst";
 // A simple component that shows the pathname of the current location
@@ -22,17 +22,21 @@ class SideMenu extends React.Component {
     "navigate":"./addons",
     "items": ["Pro-metrix","Loss history"]
   }];
-  next = (history) => {
-    history.push(navList[this.count++].path);
+  constructor(props){
+    super(props);
+  }
+  next = (history,nextRoute) => {
+    history.push(nextRoute);
+    this.props.parentCall();
   };
   render() {
     const { match, location, history } = this.props;
     return (
-      <div class="selected">
+      <div className="selected">
         <h6>Product details</h6>
         {this.selectedItems.map((value, i) => (
           <div key={i}>
-            <li onClick={()=>{this.next(history)}}>
+            <li onClick={()=>{this.next(history,value.navigate)}}>
                 {value.name}
             </li>
             {value.items.map((item, j) => (

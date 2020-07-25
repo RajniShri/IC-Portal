@@ -7,9 +7,14 @@ export class AddonsComponent extends React.Component {
     addonsIconList = ['lossHistory.png','proMetrix.png','addressValidation.png','driverLicense.png'];
     constructor(props){
         super(props);
+        this.state ={
+          addonsList:[]
+        }
     }
 
-    componentDidMount(){}
+    componentDidMount(){
+      this.setState({addonsList:JSON.parse(sessionStorage.getItem('metadata'))[0].addons});
+    }
 
     render() {
         return (

@@ -8,9 +8,14 @@ export class ProductLinesComponent extends React.Component {
   
     constructor(props){
         super(props);
+        this.state ={
+          productList:[]
+        }
     }
 
-    componentDidMount(){}
+    componentDidMount(){
+      this.setState({productList:JSON.parse(sessionStorage.getItem('metadata'))[0].productLines});
+    }
 
     render() {
         return (

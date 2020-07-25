@@ -9,27 +9,36 @@ import SideMenu from './SideMenu';
 import {navList} from './appConst/appConst';
 
 class App extends React.Component {
+  state = {};
+  constructor(props){
+    super(props);
+    this.state={};
+  }
 
   myMehtod =() => {
 	  const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "username": "jason",
-        "password": "my-super-secret-password"
-      })
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
     };
-    return fetch("http://localhost:4000/users/authenticate",requestOptions)   
+    return fetch("http://localhost:4000/metadata/getmetadata",requestOptions)   
+  }
+
+  callingParent(){
+    console.log('inside testcall');
+    
   }
 
   componentDidMount() {
-    this.myMehtod().then((resp)=>{resp.json().then((rep)=>{
-	    this.setState({userDetails:rep});
+    this.setState({resp:''});
+    this.myMehtod().then((data)=>{data.json().then((resp)=>{
+      sessionStorage.setItem('metadata',JSON.stringify(resp));
+      console.log('in app js');
+      this.setState({resp:resp});
 	  })});
   }
-
+ 
   render() {
-    return (
+    return ( 
       <div className="container">
         <div className="title">
           <h1>InsurCloud Exchange</h1>
@@ -37,25 +46,23 @@ class App extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12 row">
+            {this.state.resp && this.state.resp[0].versions[0].name && 
             <Router>
               <div className="col-md-2">
-                <SideMenu/>
+                <SideMenu parentCall={this.callingParent}/>
               </div>
               <div className="col-md-9 content">
                 <Switch>
-                {navList.map((navObj)=>(<Route exact path={navObj.path} component={navObj.component} />))}
+                {navList.map((navObj,i)=>(<Route exact path={navObj.path} component={navObj.component} key={i} />))}
                 </Switch>
                 <GotoNext/>
               </div>
               
-            </Router>
+            </Router>}
             </div>
           </div>
         </div>
-    )
-  }
-
-
+    )}
 }
 
 export default App;
