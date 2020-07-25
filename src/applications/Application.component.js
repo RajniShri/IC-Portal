@@ -1,5 +1,5 @@
 import React from 'react';
-import { faPaperPlane,faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import '../index.css';
 import {iconsBaseUrl} from "../config";
 
 export class ApplicationComponent extends React.Component {
@@ -37,11 +37,11 @@ export class ApplicationComponent extends React.Component {
             <div className="items">
               {this.state.applicationList.map((value,i) => (
                 <div className="col-md-6" key={i}>
+                  <button class="button button1">
                   <div className="icon">
-                  <img src={iconsBaseUrl+value.icon} style={{width: "25px",height: "25px"}}/>
-                  </div>
-                  <div className="icon">{value.name}</div>
-                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginBottom: "3px"}}/>
+                  <img src={iconsBaseUrl+value.icon} style={{marginTop:"10px",width: "25px",height: "25px"}}/>
+                  </div>{value.name}</button>
+                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginTop: "25px",marginLeft:"5px"}}/>
 
                 </div>
               ))}

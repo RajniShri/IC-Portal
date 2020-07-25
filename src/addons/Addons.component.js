@@ -1,9 +1,9 @@
 import React from 'react';
-import { faPaperPlane,faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import '../index.css';
 import {iconsBaseUrl} from "../config";
 
 export class AddonsComponent extends React.Component {
-    addonsIconList = ['lossHistory.png','proMetrix.png','addressValidation.png','driverLicense.png'];
+  
     constructor(props){
         super(props);
         this.state ={
@@ -22,11 +22,11 @@ export class AddonsComponent extends React.Component {
             <div className="items">
               {this.state.addonsList.map((value,i) => (
                 <div className="col-md-6"  key={i}>
+                  <button class="button button1">
                   <div className="icon">
-                  <img src={require('./addonsIcons/' + this.addonsIconList[i])} style={{width: "25px",height: "25px"}}/>
-                  </div>
-                  <div className="icon">{value}</div>
-                  <img src={require(iconsBaseUrl+'tooltip.png')} style={{width: "15px",height: "15px"}}/>
+                  <img src={iconsBaseUrl+value.icon} style={{width: "25px",height: "25px"}}/>
+                  </div>{value}</button>
+                  <img src={iconsBaseUrl+'tooltip.png'} style={{width: "15px",height: "15px",marginLeft: "5px",marginTop: "25px"}}/>
                 </div>
               ))}
             </div>
