@@ -28,7 +28,7 @@ class SideMenu extends React.Component {
   render() {
     const { match, location, history } = this.props;
     return (
-      <div >{window.location.pathname!='/confirmation'&&
+    <div >{window.location.pathname!='/confirmation'&& window.location.pathname!="/"&&
         <div className="selected"><h6>Product details</h6>
         {this.selectedItems.map((value, i) => (
           <div key={i}>

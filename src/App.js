@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
-
+import * as commonService from './commonService';
 
 import GotoNext from './GotoNext';
 import SideMenu from './SideMenu';
@@ -15,14 +15,6 @@ class App extends React.Component {
     this.state={};
   }
 
-  myMehtod =() => {
-	  const requestOptions = {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    };
-    return fetch("http://localhost:4000/metadata/getmetadata",requestOptions)   
-  }
-
   callingParent(){
     console.log('inside testcall');
     
@@ -30,7 +22,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({resp:''});
-    this.myMehtod().then((data)=>{data.json().then((resp)=>{
+    commonService.getMetadata().then((data)=>{data.json().then((resp)=>{
       sessionStorage.setItem('metadata',JSON.stringify(resp));
       console.log('in app js');
       this.setState({resp:resp});
