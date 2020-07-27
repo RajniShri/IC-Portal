@@ -44,6 +44,11 @@ export class ApplicationComponent extends React.Component {
     componentWillUnmount() {
       commonService.saveProductdetails(this.state.productDetails.applications,'applications');
     }
+
+    selectVerion=(value)=>{
+      commonService.saveProductdetails(value,'versions');
+    }
+
     render() {
         return (
       <div>   
@@ -52,7 +57,7 @@ export class ApplicationComponent extends React.Component {
             <div className="items col-md-12" style={{marginTop:"0.5rem", height: "15px"}}>
               {this.state.versionList.map((value,i) => (
                 <div className="col-md-3" key={i}>
-                  <div>{value.name} <input type="checkbox" value={this.state.productDetails.version}></input></div>
+                  <div>{value.name} <input type="checkbox" value={this.state.productDetails.version} onChange={()=>{this.selectVerion(value.code)}}></input></div>
                   <img className="tooltipCheckBox" src={iconsBaseUrl+'tooltip.png'}/>
                 </div>
               ))}
