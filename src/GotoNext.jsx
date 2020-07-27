@@ -31,7 +31,7 @@ class GotoNext extends React.Component {
     
     const { match, location, history } = this.props;
 
-  return ( <div>{this.state && this.state.navCoxuntReached && <button className="btn btn-primary" style={{backgroundColor: "#86BC25",borderColor:"#86BC25"}} onClick={()=>{this.next(history)}}>Proceed</button>}</div>);
+  return ( <div><button className="btn btn-primary" style={{backgroundColor: "#86BC25",borderColor:"#86BC25"}} onClick={()=>{this.next(history)}}>Proceed</button></div>);
 
   }
 }

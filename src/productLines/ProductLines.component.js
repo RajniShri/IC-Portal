@@ -8,7 +8,10 @@ export class ProductLinesComponent extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          productList:[]
+          productList:[],
+          productDetails: {
+            productlines: []
+          }
         }
     }
 
@@ -30,6 +33,26 @@ export class ProductLinesComponent extends React.Component {
         console.log(this.state.productList);
       });
       
+      this.prodDetails = commonService.getProductdetails();
+      this.prodDetails.productlines.forEach(app=>{
+        this.state.productDetails.productlines.push(app);
+      });
+      this.setState({productDetails: this.state.productDetails});
+    }
+
+    componentWillUnmount() {
+      commonService.saveProductdetails(this.state.productDetails.productlines,'productlines');
+    }
+
+    saveItem=(item)=>{
+      const index = this.state.productDetails.productlines.indexOf(item);
+      if(index===-1){
+        this.state.productDetails.productlines.push(item);
+      } else {
+        this.state.productDetails.productlines.splice(index,1);
+      }
+      this.setState({productDetails: this.state.productDetails});
+      console.log(this.state.productDetails.productlines);
     }
 
     render() {
@@ -39,7 +62,7 @@ export class ProductLinesComponent extends React.Component {
             <div className="items">
               {this.state.productList.map((value,i) => (
                 <div className="col-md-6" key={i}>
-                  <button className="button button1">
+                  <button className="button button1" className={this.state.productDetails.productlines.indexOf(value.code)>-1? 'is-active' : 'deactive'} onClick={()=>{this.saveItem(value.code)}}>
                   <div className="icon">
                   <img className="buttonIcon"src={iconsBaseUrl+value.icon} />
                   </div>{value.name}</button>
