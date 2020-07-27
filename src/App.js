@@ -49,7 +49,7 @@ class App extends React.Component {
             {this.state.resp && this.state.resp[0].versions[0].name && 
             <Router>
               <div className="col-md-2">
-                <SideMenu parentCall={this.callingParent}/>
+              <SideMenu parentCall={this.callingParent}/>
               </div>
               <div className="col-md-9 content">
                 <Switch>

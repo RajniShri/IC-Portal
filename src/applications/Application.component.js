@@ -46,7 +46,7 @@ export class ApplicationComponent extends React.Component {
     }
 
     selectVerion=(value)=>{
-      commonService.saveProductdetails(value,'versions');
+      commonService.saveProductdetails(value,'version');
     }
 
     render() {

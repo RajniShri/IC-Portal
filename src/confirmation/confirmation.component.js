@@ -10,16 +10,18 @@ export class ConfirmationComponent extends React.Component {
         this.state = {
           productList:[],
           productDetails: {
-            versions:[],
+            version:"",
             applications:[],
-            productlines:[],
+            productLines:[],
             addons:[]
-          }
+          },
+          submitted: false
         }
     }
 
     saveDetails(){
       commonService.save(this.state.productDetails);
+      this.setState({submitted:true}); 
     }
 
     componentDidMount(){
@@ -31,7 +33,8 @@ export class ConfirmationComponent extends React.Component {
 
     render() {
         return (
-          <div className="">
+         <div className=""> {!this.state.submitted && 
+          <div>
         <div className="col-md-12 subtitle">
             <h4>Confirm your product details below:</h4>
             </div>
@@ -45,7 +48,7 @@ export class ConfirmationComponent extends React.Component {
             </div>
             <div className="items col-md-12">
               <h6>Product Lines:</h6>
-              {this.state.productDetails.productlines.map((value,i) => (
+              {this.state.productDetails.productLines.map((value,i) => (
                 <div className="col-md-6" key={i}>
                   {value}
                 </div>
@@ -59,7 +62,13 @@ export class ConfirmationComponent extends React.Component {
                 </div>
               ))}
             </div>
-            <button onClick={()=>{this.saveDetails()}}>Submit</button>
+            <button onClick={()=>{this.saveDetails()}}>Submit</button></div>}
+            {this.state.submitted && 
+          <div>
+            <h6>Thank you !!!</h6>
+            <span> Here is reference id:</span><h6> {this.state.productDetails.productid}</h6>
+            <a href="http://localhost:3000">Start new product?</a>
+            </div>}
             </div>
         );
     }

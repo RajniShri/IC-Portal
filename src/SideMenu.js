@@ -8,15 +8,15 @@ class SideMenu extends React.Component {
   selectedItems = [{
     "name": "Applications",
     "navigate":"./application",
-    "items": ["Policy Center","Billing Center"]
+    "items": []
   },{
     "name": "Product Lines",
     "navigate":"./productline",
-    "items": ["Personal Auto","Homeowners"]
+    "items": []
   },{
     "name": "Add Ons",
     "navigate":"./addons",
-    "items": ["Pro-metrix","Loss history"]
+    "items": []
   }];
   constructor(props){
     super(props);
@@ -28,8 +28,8 @@ class SideMenu extends React.Component {
   render() {
     const { match, location, history } = this.props;
     return (
-      <div className="selected">
-        <h6>Product details</h6>
+      <div >{window.location.pathname!='/confirmation'&&
+        <div className="selected"><h6>Product details</h6>
         {this.selectedItems.map((value, i) => (
           <div key={i}>
             <li onClick={()=>{this.next(history,value.navigate)}}>
@@ -39,7 +39,7 @@ class SideMenu extends React.Component {
               <div key={j}>{item}</div>
             ))}
           </div>
-        ))}
+        ))}</div>}
       </div>
     );
   }

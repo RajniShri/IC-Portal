@@ -7,7 +7,7 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
 export  const navList = [
     {path:'/',component:ApplicationComponent},
 {path:'/application',component:ApplicationComponent},
-{path:'/productline',component:ProductLinesComponent},
+{path:'/productLines',component:ProductLinesComponent},
 {path:'/addons',component:AddonsComponent},
 {path:'/confirmation',component:ConfirmationComponent}
 ];
