@@ -22,11 +22,11 @@ export class ProductLinesComponent extends React.Component {
             <div className="items">
               {this.state.productList.map((value,i) => (
                 <div className="col-md-6" key={i}>
-                  <button class="button button1">
+                  <button className="button button1">
                   <div className="icon">
-                  <img class="buttonIcon"src={iconsBaseUrl+value.icon} />
+                  <img className="buttonIcon"src={iconsBaseUrl+value.icon} />
                   </div>{value.name}</button>
-                  <img class="tooltipIcon" src={iconsBaseUrl+'tooltip.png'}/>
+                  <img className="tooltipIcon" src={iconsBaseUrl+'tooltip.png'}/>
                 </div>
               ))}
             </div>

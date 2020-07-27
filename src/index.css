@@ -11,7 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.button {
+button {
   background-color: #86BC25; /* Green */
   border: none;
   color: white;
@@ -27,9 +27,9 @@ code {
   width: 250px;
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .button  {width:180px;}
+  button  {width:180px;}
 }
-.button1 {
+button {
   background-color: white; 
   color: black; 
   border: 2px solid #86BC25;
@@ -38,24 +38,24 @@ code {
   vertical-align: top;
 }
 
-.button1:hover {
-  background-color: #86BC25;
+button:hover {
+  background-color: #d4d1d1;
   color: white;
 }
 .tooltipIcon{
-  width: "15px";
-  height: "15px";
-  margin-Top: "25px";
-  margin-Left:"5px";
+  width: 15px;
+  height: 15px;
+  margin-Top: 25px;
+  margin-Left:5px;
 }
 .buttonIcon{
-  margin-Top:"10px";
-  width: "25px";
-  height: "25px";
+  margin-Top:10px;
+  width: 25px;
+  height: 25px;
 }
 .tooltipCheckBox{
-  width: "15px";
-  height: "15px";
-  margin-Left: "8px";
-  margin-Bottom: "5px";
+  width: 15px;
+  height: 15px;
+  margin-Left: 8px;
+  margin-Bottom: 5px;
 }

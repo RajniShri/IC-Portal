@@ -3,18 +3,33 @@ import '../index.css';
 import {iconsBaseUrl} from "../config";
 
 export class ApplicationComponent extends React.Component {
-
+  
     constructor(props){
         super(props);
         this.state ={
           applicationList:[],
-          versionList:[]
+          versionList:[],
+          productDetails: {
+            version: "",
+            applications: []
+          }
         }
     }
 
     componentDidMount(){
       this.setState({versionList:JSON.parse(sessionStorage.getItem('metadata'))[0].versions});
-	    this.setState({applicationList:JSON.parse(sessionStorage.getItem('metadata'))[0].applications});
+      this.setState({applicationList:JSON.parse(sessionStorage.getItem('metadata'))[0].applications});
+    }
+
+    saveItem=(item)=>{
+      const index = this.state.productDetails.applications.indexOf(item);
+      if(index===-1){
+        this.state.productDetails.applications.push(item);
+      } else {
+        this.state.productDetails.applications.splice(index,1);
+      }
+      this.setState({productDetails: this.state.productDetails});
+      console.log(this.state.productDetails.applications);
     }
 
     render() {
@@ -25,8 +40,8 @@ export class ApplicationComponent extends React.Component {
             <div className="items col-md-12" style={{marginTop:"0.5rem", height: "15px"}}>
               {this.state.versionList.map((value,i) => (
                 <div className="col-md-3" key={i}>
-                  <div>{value.name} <input type="checkbox"></input></div>
-                  <img class="tooltipCheckBox" src={iconsBaseUrl+'tooltip.png'}/>
+                  <div>{value.name} <input type="checkbox" value={this.state.productDetails.version}></input></div>
+                  <img className="tooltipCheckBox" src={iconsBaseUrl+'tooltip.png'}/>
                 </div>
               ))}
             </div>
@@ -37,12 +52,11 @@ export class ApplicationComponent extends React.Component {
             <div className="items">
               {this.state.applicationList.map((value,i) => (
                 <div className="col-md-6" key={i}>
-                  <button class="button button1">
+                  <button className="button button1" className={this.state.productDetails.applications.indexOf(value.code)>-1? 'is-active' : 'deactive'} onClick={()=>{this.saveItem(value.code)}}>
                   <div className="icon">
-                  <img class="buttonIcon" src={iconsBaseUrl+value.icon}/>
+                  <img className="buttonIcon" src={iconsBaseUrl+value.icon}/>
                   </div>{value.name}</button>
-                  <img class="tooltipIcon" src={iconsBaseUrl+'tooltip.png'}/>
-
+                  <img className="tooltipIcon" src={iconsBaseUrl+'tooltip.png'}/>
                 </div>
               ))}
             </div>
