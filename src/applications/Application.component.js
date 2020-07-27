@@ -1,9 +1,10 @@
 import React from 'react';
 import '../index.css';
 import {iconsBaseUrl} from "../config";
+import * as commonService from '../commonService';
 
 export class ApplicationComponent extends React.Component {
-  
+    //const _commonService = new CommonService();
     constructor(props){
         super(props);
         this.state ={
@@ -30,8 +31,12 @@ export class ApplicationComponent extends React.Component {
       }
       this.setState({productDetails: this.state.productDetails});
       console.log(this.state.productDetails.applications);
+      commonService.saveProductdetails();
     }
 
+    componentWillUnmount() {
+      commonService.saveProductdetails(this.state.productDetails.applications,'applications');
+    }
     render() {
         return (
       <div>   

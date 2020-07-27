@@ -14,7 +14,7 @@ class GotoNext extends React.Component {
     next =(history)=> {
         for(var i=0;i<navList.length;i++){
           if(navList[i].path == history.location.pathname){
-            this.count = i+1
+            this.count = i+1;
           }
         }
         if(this.count==navList.length-1){
