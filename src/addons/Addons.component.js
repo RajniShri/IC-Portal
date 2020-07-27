@@ -1,6 +1,7 @@
 import React from 'react';
 import '../index.css';
 import {iconsBaseUrl} from "../config";
+import * as commonService from '../commonService';
 
 export class AddonsComponent extends React.Component {
 
