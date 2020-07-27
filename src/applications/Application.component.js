@@ -19,7 +19,10 @@ export class ApplicationComponent extends React.Component {
 
     componentDidMount(){
       this.setState({versionList:JSON.parse(sessionStorage.getItem('metadata'))[0].versions});
-      this.setState({applicationList:JSON.parse(sessionStorage.getItem('metadata'))[0].applications});
+      this.setState({applicationList:JSON.parse(sessionStorage.getItem('metadata'))[0].applications},function(){
+        console.log(this.state.applicationList);
+      });
+      
     }
 
     saveItem=(item)=>{
@@ -30,8 +33,7 @@ export class ApplicationComponent extends React.Component {
         this.state.productDetails.applications.splice(index,1);
       }
       this.setState({productDetails: this.state.productDetails});
-      console.log(this.state.productDetails.applications);
-      commonService.saveProductdetails();
+      console.log(this.state.productDetails.applications);\
     }
 
     componentWillUnmount() {
