@@ -23,6 +23,11 @@ export class ApplicationComponent extends React.Component {
         console.log(this.state.applicationList);
       });
       
+      this.prodDetails = commonService.getProductdetails();
+      this.prodDetails.applications.forEach(app=>{
+        this.state.productDetails.applications.push(app);
+      });
+      this.setState({productDetails: this.state.productDetails});
     }
 
     saveItem=(item)=>{
@@ -33,7 +38,7 @@ export class ApplicationComponent extends React.Component {
         this.state.productDetails.applications.splice(index,1);
       }
       this.setState({productDetails: this.state.productDetails});
-      console.log(this.state.productDetails.applications);\
+      console.log(this.state.productDetails.applications);
     }
 
     componentWillUnmount() {
