@@ -21,16 +21,30 @@ export class ConfirmationComponent extends React.Component {
     }
 
     saveDetails(){
-      var params = this.state.productDetails;
-      params.productid = params.applications+params.productLines+Math.floor((Math.random()*10000000));
+      var params = commonService.getProductdetails();
+      params.productid = (params.applications+params.productLines+Math.floor((Math.random()*10000000))).split(",").join("");
       commonService.setProductdetails(params.productid,'productid');
       httpService.save(params);
       this.setState({submitted:true}); 
     }
 
     componentDidMount(){
-      this.productDetails = commonService.getProductdetails();
+      let packageDetails = commonService.getProductdetails();
+      let metadata = commonService.getMetadata()[0];
+      this.productDetails.applications = this.getLabel(metadata.applications,packageDetails.applications);
+      this.productDetails.productLines = this.getLabel(metadata.productLines,packageDetails.productLines);
+      this.productDetails.addons = this.getLabel(metadata.addons,packageDetails.addons);
       this.setState({productDetails:this.productDetails});
+    }
+
+    getLabel(metaApp,packApp) {
+      let values = [];
+      metaApp.forEach(app => {
+        if(packApp.indexOf(app.code)>-1) {
+          values.push(app);
+        }
+      });
+      return values; 
     }
 
     render() {
@@ -44,7 +58,7 @@ export class ConfirmationComponent extends React.Component {
               <h6>Applications:</h6>
               {this.state.productDetails.applications.map((value,i) => (
                 <div className="col-md-6" key={i}>
-                  {value}
+                  {value.name}
                 </div>
               ))}
             </div>
@@ -52,7 +66,7 @@ export class ConfirmationComponent extends React.Component {
               <h6>Product Lines:</h6>
               {this.state.productDetails.productLines.map((value,i) => (
                 <div className="col-md-6" key={i}>
-                  {value}
+                  {value.name}
                 </div>
               ))}
             </div>
@@ -60,7 +74,7 @@ export class ConfirmationComponent extends React.Component {
               <h6>Addons:</h6>
               {this.state.productDetails.addons.map((value,i) => (
                 <div className="col-md-6" key={i}>
-                  {value}
+                  {value.name}
                 </div>
               ))}
             </div>
