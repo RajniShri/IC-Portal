@@ -27,9 +27,7 @@ export class AddonsComponent extends React.Component {
           });
           return isAvailable;
         });
-        console.log(values);
         this.setState({addonsList:values});
-        console.log(this.state.addonsList);
       });
       this.prodDetails = commonService.getProductdetails();
       this.prodDetails.addons.forEach(app=>{
@@ -39,7 +37,7 @@ export class AddonsComponent extends React.Component {
     }
 
     componentWillUnmount() {
-      commonService.saveProductdetails(this.state.productDetails.addons,'addons');
+      commonService.setProductdetails(this.state.productDetails.addons,'addons');
     }
 
     saveItem=(item)=>{
@@ -50,7 +48,6 @@ export class AddonsComponent extends React.Component {
         this.state.productDetails.addons.splice(index,1);
       }
       this.setState({productDetails: this.state.productDetails});
-      console.log(this.state.productDetails.addons);
     }
 
     render() {

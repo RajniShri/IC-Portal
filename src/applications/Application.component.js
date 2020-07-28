@@ -19,9 +19,7 @@ export class ApplicationComponent extends React.Component {
 
     componentDidMount(){
       this.setState({versionList:JSON.parse(sessionStorage.getItem('metadata'))[0].versions});
-      this.setState({applicationList:JSON.parse(sessionStorage.getItem('metadata'))[0].applications},function(){
-        console.log(this.state.applicationList);
-      });
+      this.setState({applicationList:JSON.parse(sessionStorage.getItem('metadata'))[0].applications});
       
       this.prodDetails = commonService.getProductdetails();
       this.prodDetails.applications.forEach(app=>{
@@ -38,15 +36,14 @@ export class ApplicationComponent extends React.Component {
         this.state.productDetails.applications.splice(index,1);
       }
       this.setState({productDetails: this.state.productDetails});
-      console.log(this.state.productDetails.applications);
     }
 
     componentWillUnmount() {
-      commonService.saveProductdetails(this.state.productDetails.applications,'applications');
+      commonService.setProductdetails(this.state.productDetails.applications,'applications');
     }
 
     selectVerion=(value)=>{
-      commonService.saveProductdetails(value,'version');
+      commonService.setProductdetails(value,'version');
     }
 
     render() {

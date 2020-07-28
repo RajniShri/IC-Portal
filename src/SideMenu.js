@@ -23,7 +23,6 @@ class SideMenu extends React.Component {
   }
   next = (history,nextRoute) => {
     history.push(nextRoute);
-    this.props.parentCall();
   };
   render() {
     const { match, location, history } = this.props;

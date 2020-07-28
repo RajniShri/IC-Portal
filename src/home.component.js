@@ -9,7 +9,6 @@ export class HomeComponent extends React.Component {
 
     next = (history) => {
       history.push("/application");
-      this.props.parentCall();
     };
 
     render() {

@@ -2,6 +2,7 @@ import React from 'react';
 import '../index.css';
 import {iconsBaseUrl} from "../config";
 import * as commonService from '../commonService';
+import * as httpService from '../httpService';
 
 export class ConfirmationComponent extends React.Component {
     productDetails = {};
@@ -20,14 +21,15 @@ export class ConfirmationComponent extends React.Component {
     }
 
     saveDetails(){
-      commonService.save(this.state.productDetails);
+      var params = this.state.productDetails;
+      params.productid = params.applications+params.productLines+Math.floor((Math.random()*10000000));
+      commonService.setProductdetails(params.productid,'productid');
+      httpService.save(params);
       this.setState({submitted:true}); 
     }
 
     componentDidMount(){
       this.productDetails = commonService.getProductdetails();
-      console.log(this.productDetails);
-
       this.setState({productDetails:this.productDetails});
     }
 

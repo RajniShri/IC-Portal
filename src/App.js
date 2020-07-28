@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import * as commonService from './commonService';
+import * as httpService from './httpService';
 
 import GotoNext from './GotoNext';
 import SideMenu from './SideMenu';
@@ -15,16 +16,11 @@ class App extends React.Component {
     this.state={};
   }
 
-  callingParent(){
-    console.log('inside testcall');
-    
-  }
-
   componentDidMount() {
     this.setState({resp:''});
-    commonService.getMetadata().then((data)=>{data.json().then((resp)=>{
+    httpService.getAppdata().then((data)=>{data.json().then((resp)=>{
       sessionStorage.setItem('metadata',JSON.stringify(resp));
-      console.log('in app js');
+      commonService.setMetadata(resp);
       this.setState({resp:resp});
 	  })});
   }
@@ -41,7 +37,7 @@ class App extends React.Component {
             {this.state.resp && this.state.resp[0].versions[0].name && 
             <Router>
               <div className="col-md-2">
-              <SideMenu parentCall={this.callingParent}/>
+              <SideMenu />
               </div>
               <div className="col-md-9 content">
                 <Switch>

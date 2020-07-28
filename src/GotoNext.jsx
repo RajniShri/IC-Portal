@@ -18,9 +18,7 @@ class GotoNext extends React.Component {
           }
         }
         if(this.count==navList.length-1){
-          console.log(this.count,navList.length);
           this.setState({navCoxuntReached:undefined});
-          console.log(this.state);
         } else {
           this.setState({navCoxuntReached:true});
         }

@@ -18,7 +18,6 @@ export class ProductLinesComponent extends React.Component {
     componentDidMount(){
       this.setState({productList:JSON.parse(sessionStorage.getItem('metadata'))[0].productLines},function(){
         this.prodDetails = commonService.getProductdetails();
-        console.log(this.state.productList);
         let values = this.state.productList.filter(list=>{
           let isAvailable = false;
           list.applications.forEach(app=>{
@@ -28,9 +27,7 @@ export class ProductLinesComponent extends React.Component {
           });
           return isAvailable;
         });
-        console.log(values);
         this.setState({productList:values});
-        console.log(this.state.productList);
       });
       
       this.prodDetails = commonService.getProductdetails();
@@ -41,7 +38,7 @@ export class ProductLinesComponent extends React.Component {
     }
 
     componentWillUnmount() {
-      commonService.saveProductdetails(this.state.productDetails.productLines,'productLines');
+      commonService.setProductdetails(this.state.productDetails.productLines,'productLines');
     }
 
     saveItem=(item)=>{
@@ -52,7 +49,6 @@ export class ProductLinesComponent extends React.Component {
         this.state.productDetails.productLines.splice(index,1);
       }
       this.setState({productDetails: this.state.productDetails});
-      console.log(this.state.productDetails.productLines);
     }
 
     render() {
