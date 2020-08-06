@@ -66,7 +66,7 @@ export class ApplicationComponent extends React.Component {
             <div className="items">
               {this.state.applicationList.map((value,i) => (
                 <div className="col-md-6" key={i}>
-                  <button className="button button1" className={this.state.productDetails.applications.indexOf(value.code)>-1? 'is-active' : 'deactive'} onClick={()=>{this.saveItem(value.code)}}>
+                  <button className={this.state.productDetails.applications.indexOf(value.code)>-1? 'is-active' : 'deactive'} onClick={()=>{this.saveItem(value.code)}}>
                   <div className="icon">
                   <img className="buttonIcon" src={iconsBaseUrl+value.icon}/>
                   </div>{value.name}</button>

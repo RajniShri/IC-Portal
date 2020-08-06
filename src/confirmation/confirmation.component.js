@@ -55,35 +55,35 @@ export class ConfirmationComponent extends React.Component {
             <h4>Confirm your product details below:</h4>
             </div>
             <div className="items col-md-12">
-              <h6>Applications:</h6>
+              <h5>Applications</h5>
               {this.state.productDetails.applications.map((value,i) => (
-                <div className="col-md-6" key={i}>
+                <span className="col-md-6 textborder" key={i}>
                   {value.name}
-                </div>
+                </span>
               ))}
             </div>
             <div className="items col-md-12">
-              <h6>Product Lines:</h6>
+              <h5>Product Lines</h5>
               {this.state.productDetails.productLines.map((value,i) => (
-                <div className="col-md-6" key={i}>
+                <span className="col-md-6 textborder" key={i}>
                   {value.name}
-                </div>
+                </span>
               ))}
             </div>
             <div className="items col-md-12">
-              <h6>Addons:</h6>
+              <h5>Addons</h5>
               {this.state.productDetails.addons.map((value,i) => (
-                <div className="col-md-6" key={i}>
+                <span className="col-md-6 textborder" key={i}>
                   {value.name}
-                </div>
+                </span>
               ))}
             </div>
-            <button onClick={()=>{this.saveDetails()}}>Submit</button></div>}
+            <button class="btn btn-primary" style={{backgroundColor: "#86BC25",borderColor:"#86BC25"}} onClick={()=>{this.saveDetails()}}>Submit</button></div>}
             {this.state.submitted && 
-          <div>
-            <h6>Thank you !!!</h6>
-            <span> Here is reference id:</span><h6> {this.state.productDetails.productid}</h6>
-            <a href="http://localhost:3000">Start new product?</a>
+          <div id="header"> 
+            <h3>Thank you for chosing InsurCloud Exchange</h3>
+            <span><h4> Here is your reference id:</h4></span><h4> {this.state.productDetails.productid}</h4>
+            <a href="http://localhost:3000/login"><h4>Want to start a new product?</h4></a>
             </div>}
             </div>
         );

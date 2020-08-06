@@ -11,12 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/*styling for button for each page*/
 button {
-  background-color: #86BC25; /* Green */
-  border: none;
-  color: white;
+  background-color: white; /* Green */
+  border: 2px solid #86BC25;
+  border-radius: 4px;
+  white-space: normal;
+  vertical-align: top;
+  color:  black;
   padding: 6px 6px;
-  text-align: center;
+  text-align: left;
+  line-height: 45px;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
@@ -29,17 +34,9 @@ button {
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   button  {width:180px;}
 }
-button {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #86BC25;
-  border-radius: 4px;
-  white-space: normal;
-  vertical-align: top;
-}
 
 button:hover {
-  background-color: #d4d1d1;
+  background-color: #86BC25;
   color: white;
 }
 .tooltipIcon{
@@ -50,6 +47,8 @@ button:hover {
 }
 .buttonIcon{
   margin-Top:10px;
+  margin-left: 2px;
+  margin-bottom: 15px;
   width: 25px;
   height: 25px;
 }
@@ -58,4 +57,46 @@ button:hover {
   height: 15px;
   margin-Left: 8px;
   margin-Bottom: 5px;
+}
+/* Specify the background color to be for checkbox */ 
+.checkboxStyle{ 
+background-color: red; 
+      }
+
+input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+.centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+      }
+
+    form,#header {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+.textborder{
+  padding: 10px;
+  background: #046A38;
+  color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding-top: 5px;
 }

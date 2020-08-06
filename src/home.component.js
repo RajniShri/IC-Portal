@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.css';
-import * as commonService from './commonService';
 
 export class HomeComponent extends React.Component {
     constructor(props){
@@ -14,10 +13,10 @@ export class HomeComponent extends React.Component {
     render() {
       const { match, location, history } = this.props;
         return (
-         <div className=""> 
-        <div className="col-md-12 subtitle">
-            <h4>Welcome to Insur Cloud</h4>
-            <a href="" onClick={()=>{this.next(history)}}>Create My product</a>
+         <div className="" id="header"> 
+        <div className="col-md-12 subtitle" style= {{textAlign: "center"}}>
+            <h3>Welcome to InsurCloud Exchange</h3>
+            <a href="" onClick={()=>{this.next(history)}}><h4>Create My product</h4></a>
             </div>
             </div>
         );
