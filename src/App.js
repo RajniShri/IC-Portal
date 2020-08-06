@@ -27,7 +27,7 @@ class App extends React.Component {
  
   render() {
     return ( 
-      <div className="container">
+      <div className="col-md-12 col-sm-6 col-xs-8">
         <div className="title">
           <h1>InsurCloud Exchange</h1>
           <h6>Marketplace for Guidewire solutions || Powered by Guidewire</h6>
@@ -36,7 +36,7 @@ class App extends React.Component {
           <div className="col-md-12 row">
             {this.state.resp && this.state.resp[0].versions[0].name && 
             <Router>
-              <div className="col-md-2">
+              <div className="col-md-3">
               <SideMenu />
               </div>
               <div className="col-md-9 content">
