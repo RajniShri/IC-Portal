@@ -72,7 +72,8 @@
     margin-right: 5px;
 }
 .selected {
-  box-shadow: 1px 0px 4px;
+	min-height: 33em;
+    border-right: 1px solid #bdbcbc;
   padding: 5px 10px;
   font-size: 15px;
 }
