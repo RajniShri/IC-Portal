@@ -22,18 +22,19 @@ export class ConfirmationComponent extends React.Component {
 
     saveDetails(){
       var params = commonService.getProductdetails();
-      params.productid = (params.applications+params.productLines+Math.floor((Math.random()*10000000))).split(",").join("");
-      commonService.setProductdetails(params.productid,'productid');
       httpService.save(params);
       this.setState({submitted:true}); 
     }
 
     componentDidMount(){
       let packageDetails = commonService.getProductdetails();
+      packageDetails.productid = (packageDetails.applications+packageDetails.productLines+Math.floor((Math.random()*10000000))).split(",").join("");
+      commonService.setProductdetails(packageDetails.productid,'productid');
       let metadata = commonService.getMetadata()[0];
       this.productDetails.applications = this.getLabel(metadata.applications,packageDetails.applications);
       this.productDetails.productLines = this.getLabel(metadata.productLines,packageDetails.productLines);
       this.productDetails.addons = this.getLabel(metadata.addons,packageDetails.addons);
+      this.productDetails.productid = packageDetails.productid;
       this.setState({productDetails:this.productDetails});
     }
 
@@ -78,7 +79,7 @@ export class ConfirmationComponent extends React.Component {
                 </span>
               ))}
             </div>
-            <button class="btn btn-primary" style={{backgroundColor: "#86BC25",borderColor:"#86BC25"}} onClick={()=>{this.saveDetails()}}>Submit</button></div>}
+            <button class="func_button" onClick={()=>{this.saveDetails()}}>Submit</button></div>}
             {this.state.submitted && 
           <div id="header"> 
             <h3>Thank you for chosing InsurCloud Exchange</h3>

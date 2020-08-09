@@ -100,3 +100,15 @@ a:link {
   margin-right: 10px;
   padding-top: 5px;
 }
+.func_button{
+  margin-top: 50px;
+  margin-left: 10px;
+  text-align: center;
+  background-color: #86BC25; /* Green */
+  border: 2px solid #86BC25;
+  border-radius: 4px;
+  line-height: 45px;
+  transition-duration: 0.4s;
+  color:  white;
+  font-size: 20px;
+}
